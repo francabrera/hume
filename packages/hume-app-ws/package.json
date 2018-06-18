@@ -1,0 +1,38 @@
+{
+  "name": "@hume/app-ws",
+  "version": "0.0.0",
+  "contributors": ["https://github.com/IBMresearch/hume/graphs/contributors"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBMresearch/hume"
+  },
+  "keywords": [
+    "micro",
+    "services",
+    "http",
+    "api",
+    "web",
+    "websockets",
+    "ws",
+    "security",
+    "loopback",
+    "performance"
+  ],
+  "bugs": {
+    "url": "https://github.com/IBMresearch/hume/issues"
+  },
+  "scripts": {
+    "start": "node .",
+    "dep-check": "depcheck",
+    "test": "mocha --recursive test"
+  },
+  "dependencies": {
+    "@hume/utils": "^0.0.0",
+    "jlocke": "0.0.28",
+    "uws": "^9.14.0"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "license": "Apache-2.0"
+}

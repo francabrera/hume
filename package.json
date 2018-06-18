@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "install": "lerna bootstrap",
+    "clean": "lerna clean --yes",
+    "start": "DBG=true node example/server/server.js",
+    "start-ws": "DBG=true node example/server/ws.js",
+    "lint": "eslint .",
+    "format": "prettier --write '**/*.js'",
+    "precommit": "pretty-quick --staged",
+    "dep-check": "depcheck --ignores='mocha,husky' && lerna run dep-check",
+    "test-app": "lerna run test --scope hume-app",
+    "test-ws": "lerna run test --scope hume-app-ws",
+    "test-utils": "lerna run test --scope api-utils",
+    "test-utils-test": "lerna run test --scope api-utils-test",
+    "test": "lerna run test",
+    "pretest": "npm i && npm run lint && npm run dep-check",
+    "publish": "lerna publish"
+  },
+  "devDependencies": {
+    "depcheck": "^0.6.8",
+    "eslint": "^4.17.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-json": "^1.2.0",
+    "husky": "^0.14.3",
+    "lerna": "^2.11.0",
+    "mocha": "^5.0.0",
+    "prettier": "1.13.0",
+    "pretty-quick": "^1.6.0"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "private": true,
+  "license": "Apache-2.0"
+}

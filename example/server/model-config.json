@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "sources": ["./models"],
+    "mixins": ["./mixins"]
+  },
+  "cat": {
+    "dataSource": "db",
+    "options": {
+      "remoting": {
+        "sharedMethods": {
+          "*": false,
+          "find": true
+        }
+      }
+    }
+  },
+  "dog": {
+    "dataSource": "db"
+  }
+}

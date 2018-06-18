@@ -1,0 +1,32 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    font-family: "ibm-plex-sans","HelvLightIBM","Helvetica Neue",Arial,sans-serif;
+}
+
+.swagger-section #header {
+    background-color: #ffffff !important;
+    border-bottom: 4px solid #00165f;
+    padding: 14px;
+}
+
+#header img {
+    vertical-align: middle;
+}
+
+
+body #header form#api_selector .input a#explore {
+    background-color: #00165f !important;
+}
+
+.heading h2 {
+    font-size: 95% !important;
+    font-weight: normal !important;
+}
+
+.heading h2 a {
+    font-size: 120% !important;
+    font-weight: bold !important;
+}
+
+.accessTokenDisplay {
+    color: inherit !important;
+}

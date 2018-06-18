@@ -1,0 +1,7 @@
+{
+  "interval": {
+    "NOTE": "In minutes",
+    "cache": 30,
+    "send": 5
+  }
+}

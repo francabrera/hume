@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+</head>
+
+
+<body>
+  <h2>Websocket example</h2>
+  <div id="output"></div>
+  
+  <script>
+  const token = 'bad_token';
+  // const wsUri = `ws://localhost:3000?token=${token}`;
+  const wsUri = `ws://localhost:3000?token=${token}&filter=garfield`;
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const output = document.getElementById("output");
+
+    function writeToScreen(message) {
+      const pre = document.createElement('p');
+
+      pre.style.wordWrap = 'break-word';
+      pre.innerHTML = message;
+      output.appendChild(pre);
+    }
+
+
+    const websocket = new WebSocket(wsUri);
+
+    websocket.onopen = () => {
+      writeToScreen('CONNECTED');
+    };
+
+    websocket.onclose = () => {
+      writeToScreen('DISCONNECTED');
+    };
+
+    websocket.onmessage = (evt) => {
+      console.log('---------------------------');
+      console.log(evt);
+      console.log('---------------------------');
+      writeToScreen(`<span style="color: blue;">NEW DATA: ${evt.data}</span>`);
+      // websocket.close();
+    };
+
+    websocket.onerror = (evt) => {
+      writeToScreen(`<span style="color: red;">ERROR:</span> ${evt.data}`);
+    };
+  });    
+  </script>
+
+</body>
+
+</html>

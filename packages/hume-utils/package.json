@@ -1,0 +1,44 @@
+{
+  "name": "@hume/utils",
+  "version": "0.0.0",
+  "contributors": ["https://github.com/IBMresearch/hume/graphs/contributors"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/IBMresearch/hume"
+  },
+  "keywords": [
+    "micro",
+    "services",
+    "http",
+    "api",
+    "web",
+    "websockets",
+    "ws",
+    "security",
+    "loopback",
+    "performance"
+  ],
+  "bugs": {
+    "url": "https://github.com/IBMresearch/hume/issues"
+  },
+  "scripts": {
+    "dep-check": "depcheck",
+    "test": "mocha --recursive test"
+  },
+  "dependencies": {
+    "bunyan": "^1.8.12",
+    "bunyan-prettystream": "^0.1.3",
+    "cfenv": "^1.0.4",
+    "lodash": "^4.17.4",
+    "p-each-series": "^1.0.0",
+    "p-map": "^1.2.0",
+    "p-map-series": "^1.0.0",
+    "require-directory": "^2.1.1",
+    "system-sleep": "^1.3.6",
+    "validator": "^9.3.0"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "license": "Apache-2.0"
+}
