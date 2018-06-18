@@ -1,6 +1,6 @@
 # hume HTTP app
 
-LoopBack (HTTP API) appplication abstraction to reuse in the services. The API is the LoopBack one, so we only show an example of use here.
+LoopBack (HTTP API) appplication abstraction to reuse in the services.
 
 ## Install
 
