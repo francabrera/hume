@@ -14,11 +14,11 @@
 
 In the [`packages`](packages) folders you can find all you need. Each package includes its own README, please visit them :smile:.
 
-- [**hume-app**](services/hume-app): Helpers to implement a complete HTTP API microservice.
-- [**hume-app-ws**](services/hume-app-ws): Helpers to implement a websockets microservice.
-- [**hume-script**](services/hume-script): Devops tasks command line client.
-- [**hume-utils**](services/hume-utils): Common helpers among the rest of the packages.
-- [**hume-utils-test**](services/hume-utils-test): Same, but only used in tests.
+- [**hume-app**](packages/hume-app): Helpers to implement a complete HTTP API microservice.
+- [**hume-app-ws**](packages/hume-app-ws): Helpers to implement a websockets microservice.
+- [**hume-script**](packages/hume-script): Devops tasks command line client.
+- [**hume-utils**](packages/hume-utils): Common helpers among the rest of the packages.
+- [**hume-utils-test**](packages/hume-utils-test): Same, but only used in tests.
 
 ## Install
 
