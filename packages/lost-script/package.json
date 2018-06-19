@@ -1,7 +1,9 @@
 {
   "name": "@lost/script",
   "version": "0.0.0",
-  "bin": { "lost": "./index.js" },
+  "bin": {
+    "lost": "./index.js"
+  },
   "contributors": [
     "https://github.com/IBMresearch/lost/graphs/contributors"
   ],
