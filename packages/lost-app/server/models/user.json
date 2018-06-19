@@ -1,6 +1,6 @@
 {
   "name": "user",
-  "description": "Hume core user model.",
+  "description": "lost core user model.",
   "base": "User",
   "strict": true,
   "idInjection": true,

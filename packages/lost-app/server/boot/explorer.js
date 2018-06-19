@@ -23,9 +23,9 @@ module.exports = server => {
     uiDirs: [path.resolve(__dirname, '../../public/explorer')],
     version: server.get('explorer.version') || version,
     apiInfo: {
-      title: server.get('explorer.title') || 'Hume API',
+      title: server.get('explorer.title') || 'lost API',
       description:
-        server.get('explorer.description') || 'Hume HTTP API specification.',
+        server.get('explorer.description') || 'lost HTTP API specification.',
     },
   });
 };

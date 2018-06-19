@@ -30,5 +30,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Helpers: util, HTTP, testing.
 - Initial Bluemix integration.
 
-[unreleased]: https://github.com/IBMresearch/hume/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/IBMresearch/hume/compare/TODO...v0.0.1
+[unreleased]: https://github.com/IBMresearch/lost/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/IBMresearch/lost/compare/TODO...v0.0.1

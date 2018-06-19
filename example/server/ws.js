@@ -1,8 +1,8 @@
 'use strict';
 
-const utils = require('../../packages/hume-utils');
-const app = require('../../packages/hume-app');
-const appWs = require('../../packages/hume-app-ws');
+const utils = require('../../packages/lost-utils');
+const app = require('../../packages/lost-app');
+const appWs = require('../../packages/lost-app-ws');
 
 const name = 'Demo WS';
 
@@ -29,7 +29,7 @@ async function cache() {
 }
 
 app.on('bootedAll', () => {
-  log.info('hume app booted');
+  log.info('lost app booted');
   appWs.start(name, cache, 'bad_token');
 });
 

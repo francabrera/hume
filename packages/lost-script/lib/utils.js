@@ -1,6 +1,6 @@
 'use strict';
 
-const utils = require('@hume/utils');
+const utils = require('@lost/utils');
 
 utils.log = utils.logger('script');
 

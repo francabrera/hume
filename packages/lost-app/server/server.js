@@ -66,11 +66,11 @@ app.start = (path, opts = {}) => {
     app.set('explorer.termsOfService', opts.explorer.termsOfService);
   }
 
-  utils.log.debug('Bootstrapping "hume-app" ...');
+  utils.log.debug('Bootstrapping "lost-app" ...');
   boot(app, __dirname, err => {
-    if (err) { exitWithError('Bootstrapping "hume-app"', err); }
+    if (err) { exitWithError('Bootstrapping "lost-app"', err); }
 
-    utils.log.debug('"hume-app" correctly bootstraped, now the user app ...', { path });
+    utils.log.debug('"lost-app" correctly bootstraped, now the user app ...', { path });
     boot(app, path, errMain => {
       if (errMain) {
         exitWithError('Bootstrapping the user app', errMain);

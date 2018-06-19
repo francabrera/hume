@@ -1,4 +1,4 @@
-# hume HTTP app
+# lost HTTP app
 
 LoopBack (HTTP API) appplication abstraction to reuse in the services.
 
@@ -7,7 +7,7 @@ LoopBack (HTTP API) appplication abstraction to reuse in the services.
 :coffee: Install [Node.js](https://nodejs.org/download) v8 and then:
 
 ```sh
-npm i @hume/app
+npm i @lost/app
 ```
 
 ## Use
@@ -15,7 +15,7 @@ npm i @hume/app
 :pencil: Include you LoopBack custom setup files (`model-config.json`, `datasources.json`, etc.) in the same folder al require it . Please visit the [api-research](../services/api-research) implementation.
 
 ```js
-const app = require('@hume/app');
+const app = require('@lost/app');
 
 app.start(__dirname);
 ```
@@ -28,9 +28,9 @@ app.start(__dirname);
 
 Start the LoopBack app.
 
-- `path` (string) - Path to the app sources. To bootstrap (configure models, datasources and middleware) the app with some different setup than `hume-app` the one. Probably you should pass `__dirname` here.
+- `path` (string) - Path to the app sources. To bootstrap (configure models, datasources and middleware) the app with some different setup than `lost-app` the one. Probably you should pass `__dirname` here.
 - `opts` (object) - Optional parameters. (default: {})
-  - `name` (string) - Identifier of the microservice for logging, monitoring, etc. If `path` is passed is's gathered from the main app package.json file name. (default: "hume-app")
+  - `name` (string) - Identifier of the microservice for logging, monitoring, etc. If `path` is passed is's gathered from the main app package.json file name. (default: "lost-app")
   - `noHttp` (boolean) - To re-use only the LoopBack models. The Redis cache is disabled and the HTTP server is not started. (default: false)
   - `auth` (boolean) - To fisable authentication. (default: false)
   - `cache` (object) - Model caching options, disabled if `noHttp` enabled:

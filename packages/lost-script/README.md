@@ -1,13 +1,13 @@
-# hume devops
+# lost devops
 
-Devops tasks command line client for hume.
+Devops tasks command line client for lost.
 
 ## Install
 
 :coffee: Install [Node.js](https://nodejs.org/download) v8 and then:
 
 ```sh
-npm i -g @hume/script
+npm i -g @lost/script
 ```
 
 ## Use
@@ -15,13 +15,13 @@ npm i -g @hume/script
 :pencil: Please use the argument `-h`.
 
 ```sh
-hume -h
+lost -h
 ```
 
 Output:
 
 ```sh
-Usage: hume [options] <app>
+Usage: lost [options] <app>
 
 Some useful development tasks to run things locally but with a bluemix app environment variables. Only one options issupported at the same time.
 

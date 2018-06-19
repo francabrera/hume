@@ -1,13 +1,13 @@
 {
-  "name": "@hume/script",
+  "name": "@lost/script",
   "version": "0.0.0",
-  "bin": { "hume": "./index.js" },
+  "bin": { "lost": "./index.js" },
   "contributors": [
-    "https://github.com/IBMresearch/hume/graphs/contributors"
+    "https://github.com/IBMresearch/lost/graphs/contributors"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBMresearch/hume"
+    "url": "https://github.com/IBMresearch/lost"
   },
   "keywords": [
     "micro",
@@ -24,14 +24,14 @@
     "ibmcloud"
   ],
   "bugs": {
-    "url": "https://github.com/IBMresearch/hume/issues"
+    "url": "https://github.com/IBMresearch/lost/issues"
   },
   "scripts": {
     "dep-check": "depcheck",
     "test": "echo TODO"
   },
   "dependencies": {
-    "@hume/utils": "^0.0.0",
+    "@lost/utils": "^0.0.0",
     "commander": "^2.15.1"
   },
   "engines": {

@@ -1,4 +1,4 @@
-# hume utils
+# lost utils
 
 Some helpers shared among the rest of the packages.
 
@@ -7,7 +7,7 @@ Some helpers shared among the rest of the packages.
 :coffee: Install [Node.js](https://nodejs.org/download) v8 and then:
 
 ```sh
-npm i @hume/utils
+npm i @lost/utils
 ```
 
 ## Use
@@ -15,7 +15,7 @@ npm i @hume/utils
 :pencil: You can visit the complete example [in this tests](./test).
 
 ```js
-const utils = require('@hume/utils');
+const utils = require('@lost/utils');
 
 console.log('Version');
 console.log(utils.version);

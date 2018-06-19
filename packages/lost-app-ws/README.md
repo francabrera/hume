@@ -1,4 +1,4 @@
-# hume WS app
+# lost WS app
 
 Websockets service application abstraction to decrease the load in the HTTP APIs for common read only requests.
 
@@ -9,7 +9,7 @@ For now it keeps an updated cache in memory of the needed data. All the connecte
 :coffee: Install [Node.js](https://nodejs.org/download) v8 and then:
 
 ```sh
-npm i @hume/app-ws
+npm i @lost/app-ws
 ```
 
 ### Dependencies

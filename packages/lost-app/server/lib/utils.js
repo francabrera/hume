@@ -1,6 +1,6 @@
 'use strict';
 
-const utils = require('@hume/utils');
+const utils = require('@lost/utils');
 const jLocke = require('jlocke');
 
 const { name } = require('../../package.json');

@@ -1,9 +1,9 @@
-# hume
+# lost
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
-[![Build Status](https://travis-ci.org/IBMresearch/hume.svg?branch=master)](https://travis-ci.org/IBMresearch/hume)
+[![Build Status](https://travis-ci.org/IBMresearch/lost.svg?branch=master)](https://travis-ci.org/IBMresearch/lost)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 :atom_symbol: Microservices framework on top of [LoopBack](http://loopback.io) and [uWebsockets](https://github.com/uNetworking/uWebSockets). Focused in reusability, security and performance.
@@ -14,11 +14,11 @@
 
 In the [`packages`](packages) folders you can find all you need. Each package includes its own README, please visit them :smile:.
 
-- [**hume-app**](packages/hume-app): Helpers to implement a complete HTTP API microservice.
-- [**hume-app-ws**](packages/hume-app-ws): Helpers to implement a websockets microservice.
-- [**hume-script**](packages/hume-script): Devops tasks command line client.
-- [**hume-utils**](packages/hume-utils): Common helpers among the rest of the packages.
-- [**hume-utils-test**](packages/hume-utils-test): Same, but only used in tests.
+- [**lost-app**](packages/lost-app): Helpers to implement a complete HTTP API microservice.
+- [**lost-app-ws**](packages/lost-app-ws): Helpers to implement a websockets microservice.
+- [**lost-script**](packages/lost-script): Devops tasks command line client.
+- [**lost-utils**](packages/lost-utils): Common helpers among the rest of the packages.
+- [**lost-utils-test**](packages/lost-utils-test): Same, but only used in tests.
 
 ## Install
 
@@ -26,9 +26,9 @@ In the [`packages`](packages) folders you can find all you need. Each package in
 - :pizza: Each package can be installed independently.
 
 ```sh
-npm i -g @hume/app
-npm i -g @hume/app-ws
-npm i -g @hume/utils
+npm i -g @lost/app
+npm i -g @lost/app-ws
+npm i -g @lost/utils
 
 ...
 ```

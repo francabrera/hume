@@ -1,4 +1,4 @@
-# hume utils test
+# lost utils test
 
 Some helpers shared among the tests.
 
@@ -7,7 +7,7 @@ Some helpers shared among the tests.
 :coffee: Install [Node.js](https://nodejs.org/download) v8 and then:
 
 ```sh
-npm i @hume/utils-test
+npm i @lost/utils-test
 ```
 
 ## Use
@@ -15,7 +15,7 @@ npm i @hume/utils-test
 :pencil: You can visit the complete example [in this tests](./test).
 
 ```js
-const utilsTest = require('@hume/utils-test');
+const utilsTest = require('@lost/utils-test');
 
 console.log('Version');
 console.log(utilsTst.version);
