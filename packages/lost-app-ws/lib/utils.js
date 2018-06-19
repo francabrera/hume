@@ -12,7 +12,7 @@
 // TODO: Repeated in lost-app
 
 const utils = require('@lost/utils');
-const jLocke = require('jlocke');
+const monit = require('@lost/monit-express');
 
 const { name } = require('../package.json');
 
@@ -22,16 +22,16 @@ utils.log = log;
 
 // To set the env var is the way we use to enable it.
 if (process.env.DB_ELASTIC) {
-  utils.jLocke = jLocke;
+  utils.monit = monit;
 }
 
 utils.error = async (msg, error, opts) => {
   if (process.env.DB_ELASTIC) {
     try {
-      await jLocke.error(msg, error, opts);
-      log.debug('Error properly reported to jLocke', error);
+      await monit.error(msg, error, opts);
+      log.debug('Error properly reported to monit', error);
     } catch (err) {
-      log.error('jLocke reporting error: ', err);
+      log.error('monit reporting error: ', err);
     }
   }
 

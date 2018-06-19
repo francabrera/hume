@@ -46,7 +46,7 @@ The result of this method to parse the important info from Bluemix app environme
 
 ### `async lb.getUserId(req) -> id`
 
-To get the user ID in LoopBack from a request object. Useful with [this middleware](https://github.com/IBMResearch/jlocke).
+To get the user ID in LoopBack from a request object. Useful with [this middleware](packages/lost-monit-express).
 
 - `req` (object) - A Loopback "request" object.
 - `id` (string) - The user identifierm `null` if not found.
@@ -70,11 +70,11 @@ A wrapper around [Bunyan](https://github.com/trentm/node-bunyan) (with [prettyst
 
 #### `log.info(args) -> null`
 
-A wrapper around `bunyan.info` to print (and send to jLocke if setup) only critical errors. To print things that are not errors but we want them always printed, things we want to know that happened (ie: bad login). Keep it to the minimal, because it's also printed in production and "console.*" are sync operations.
+A wrapper around `bunyan.info` to print (and send to monitoring if setup) only critical errors. To print things that are not errors but we want them always printed, things we want to know that happened (ie: bad login). Keep it to the minimal, because it's also printed in production and "console.*" are sync operations.
 
 #### `log.error(args) -> null`
 
-A wrapper around `bunyan.error` to print (and send to jLocke if setup) only critical errors.
+A wrapper around `bunyan.error` to print (and send to monitoring if setup) only critical errors.
 
 #### `log.debug(args) -> null`
 

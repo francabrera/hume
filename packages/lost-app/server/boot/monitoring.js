@@ -35,25 +35,25 @@ module.exports = (server, callback) => {
     return;
   }
 
-  utils.log.info('Elastic is present, initing jLocke ...');
-  utils.jLocke
+  utils.log.info('Elastic is present, initing monitoring ...');
+  utils.monit
     .init(process.env.DB_ELASTIC, {
       app: server.get('serviceName'),
       // trace: true,
     })
     .then(() => {
-      // We use "log.error" (instead "error") because jLocke is not working in both cases.
-      utils.log.error('jLocke middleware initialized');
+      // We use "log.error" (instead "error") because monitoring is not working in both cases.
+      utils.log.error('Monitoring middleware initialized');
       callback();
     })
     .catch(err => {
-      utils.log.error('jLocke init error: ', err);
+      utils.log.error('Monitoring init error: ', err);
       callback();
     });
 
   utils.log.debug('Attaching it to Express ...');
   server.use(
-    utils.jLocke.express({
+    utils.monit.express({
       // To store only the requests with this subpath.
       only: 'api',
       hide: { fun: shoudlHide },

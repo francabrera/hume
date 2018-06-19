@@ -29,6 +29,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Basic HTTP security.
 - Helpers: util, HTTP, testing.
 - Initial Bluemix integration.
+- Monitoring: [jLocke](https://github.com/IBMResearch/jlocke) moved here as [express-monit](packages/lost-express-monit)
 
 [unreleased]: https://github.com/IBMresearch/lost/compare/v0.0.1...HEAD
 [0.0.1]: https://github.com/IBMresearch/lost/compare/TODO...v0.0.1

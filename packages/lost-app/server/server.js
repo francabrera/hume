@@ -17,7 +17,7 @@ const cacheSetup = require('./lib/cache');
 const { name } = require('../package');
 
 function exitWithError(msg, err) {
-  // It's async because it has to report to jLocke (if enabled).
+  // It's async because it has to report to monitoring (if enabled).
   utils
     .error(msg, err)
     // TODO: When finally is in Node we can clean this a bit.
