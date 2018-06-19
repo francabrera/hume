@@ -1,5 +1,5 @@
 {
-  "name": "@lost/utils-test",
+  "name": "@lost/monit-express",
   "version": "0.0.0",
   "contributors": [
     "https://github.com/IBMresearch/lost/graphs/contributors"
@@ -18,22 +18,39 @@
     "ws",
     "security",
     "loopback",
-    "performance"
+    "performance",
+    "monitoring",
+    "metrics",
+    "loopback",
+    "express",
+    "middleware",
+    "request",
+    "elastic",
+    "kibana"
   ],
   "bugs": {
     "url": "https://github.com/IBMresearch/lost/issues"
   },
   "scripts": {
+    "start": "node .",
     "dep-check": "depcheck",
     "test": "mocha --recursive test"
   },
   "dependencies": {
-    "lodash": "^4.17.4",
-    "snap-shot-it": "^4.0.1",
-    "supertest": "^3.0.0"
+    "@lost/utils": "^0.0.0",
+    "elasticsearch": "^15.0.0",
+    "ipaddr.js": "^1.6.0",
+    "is-promise": "^2.1.0"
+  },
+  "devDependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.0",
+    "request": "^2.87.0",
+    "request-promise-native": "^1.0.5",
+    "response-time": "^2.3.2"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=8.0"
   },
   "license": "Apache-2.0"
 }
