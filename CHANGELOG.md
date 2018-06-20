@@ -16,10 +16,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
-### ✏️ Added
-
-- HTTP app abstraction.
-
 ## [0.0.1] - 2018-6-18
 
 ### ✏️ Added
