@@ -9,9 +9,9 @@
 
 'use strict';
 
-const utils = require('../../packages/lost-utils');
-const app = require('../../packages/lost-app');
-const appWs = require('../../packages/lost-app-ws');
+const utils = require('../../packages/hume-utils');
+const app = require('../../packages/hume-app');
+const appWs = require('../../packages/hume-app-ws');
 
 const name = 'Demo WS';
 
@@ -24,7 +24,6 @@ app.start(__dirname, {
   noHttp: true,
 });
 
-
 log.info('Starting WS app ...');
 
 async function cache() {
@@ -32,13 +31,14 @@ async function cache() {
   const result = {};
 
   // To respect expected cache format.
-  utils.each(all, one => { result[one.name] = one; });
+  utils.each(all, one => {
+    result[one.name] = one;
+  });
 
   return result;
 }
 
 app.on('bootedAll', () => {
-  log.info('lost app booted');
+  log.info('hume app booted');
   appWs.start(name, cache, 'bad_token');
 });
-

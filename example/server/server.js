@@ -9,8 +9,8 @@
 
 'use strict';
 
-const utils = require('../../packages/lost-utils');
-const app = require('../../packages/lost-app');
+const utils = require('../../packages/hume-utils');
+const app = require('../../packages/hume-app');
 
 const name = 'Demo HTTP API';
 
@@ -27,6 +27,5 @@ app.start(__dirname, {
   },
   cache: { methods: { cat: ['find'] } },
 });
-
 
 module.exports = app;

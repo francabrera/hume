@@ -1,0 +1,16 @@
+{
+  "name": "user",
+  "description": "hume core user model.",
+  "base": "User",
+  "strict": true,
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {},
+  "hidden": [],
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,9 +1,9 @@
-# lost
+# hume
 
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
-[![Build Status](https://travis-ci.org/IBMresearch/lost.svg?branch=master)](https://travis-ci.org/IBMresearch/lost)
+[![Build Status](https://travis-ci.org/IBMresearch/hume.svg?branch=master)](https://travis-ci.org/IBMresearch/hume)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 :atom_symbol: Microservices framework on top of [LoopBack](http://loopback.io) and [uWebsockets](https://github.com/uNetworking/uWebSockets). Focused in reusability, security and performance.
@@ -14,12 +14,12 @@
 
 In the [`packages`](packages) folders you can find all you need. Each package includes its own README, please visit them :smile:.
 
-- [**lost-app**](packages/lost-app): Helpers to implement a complete HTTP API microservice.
-- [**lost-app-ws**](packages/lost-app-ws): Helpers to implement a websockets microservice.
-- [**lost-script**](packages/lost-script): Devops tasks command line client.
-- [**lost-utils**](packages/lost-utils): Common helpers among the rest of the packages.
-- [**lost-utils-test**](packages/lost-utils-test): Same, but only used in tests.
-- [**lost-monit-express**](packages/lost-monit-express): Express middleware to store requests metadata to a Elastic DB.
+- [**hume-app**](packages/hume-app): Helpers to implement a complete HTTP API microservice.
+- [**hume-app-ws**](packages/hume-app-ws): Helpers to implement a websockets microservice.
+- [**hume-script**](packages/hume-script): Devops tasks command line client.
+- [**hume-utils**](packages/hume-utils): Common helpers among the rest of the packages.
+- [**hume-utils-test**](packages/hume-utils-test): Same, but only used in tests.
+- [**hume-monit-express**](packages/hume-monit-express): Express middleware to store requests metadata to a Elastic DB.
 
 ## Install
 
@@ -27,9 +27,9 @@ In the [`packages`](packages) folders you can find all you need. Each package in
 - :pizza: Each package can be installed independently.
 
 ```sh
-npm i -g @lost/app
-npm i -g @lost/app-ws
-npm i -g @lost/utils
+npm i -g @hume/app
+npm i -g @hume/app-ws
+npm i -g @hume/utils
 
 ...
 ```
@@ -44,9 +44,9 @@ In most of the cases we use external services, so we have defined next environme
 
 - NODE_ENV: Set it to "production" for deployments. It's importat due to [security](https://github.com/jesusprubio/strong-node#12-returned-errors-dont-include-sensitive-information-about-the-environment-stack-paths-db-queries-etc-cwe-209) and [performance](https://www.dynatrace.com/news/blog/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications) reasons. We think it's a bit confusing with the LoopBack common setup using files with the environment in the name (ie: datasources.production.json). So, simply add the next point ones to enable the persistent service you need in each case.
 - DB_MONGO: MongoDB URI, as the main database engine. If not present memory is used as fallback.
-- DB_ELASTIC: Elastic URI, for monitoring, through [@lost/monit-express](packages/lost-monit-express). If not present related features are disabled.
+- DB_ELASTIC: Elastic URI, for monitoring, through [@hume/monit-express](packages/hume-monit-express). If not present related features are disabled.
 - DB_REDIS: Redis URI, for caching.
-- DB_ELASTIC_TEST: Elastic URI, for testing [@lost/monit-express](packages/lost-monit-express). If not present involved tests are omitted.
+- DB_ELASTIC_TEST: Elastic URI, for testing [@hume/monit-express](packages/hume-monit-express). If not present involved tests are omitted.
 
 ```sh
 # Only Mongo persistent.
