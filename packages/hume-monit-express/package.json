@@ -1,6 +1,6 @@
 {
   "name": "@hume/monit-express",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "contributors": [
     "https://github.com/IBMresearch/hume/graphs/contributors"
   ],
@@ -37,7 +37,7 @@
     "test": "mocha --recursive test"
   },
   "dependencies": {
-    "@hume/utils": "^0.0.0",
+    "@hume/utils": "^0.0.1",
     "elasticsearch": "^15.0.0",
     "ipaddr.js": "^1.6.0",
     "is-promise": "^2.1.0"
