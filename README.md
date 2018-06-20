@@ -3,7 +3,7 @@
 [![experimental](http://badges.github.io/stability-badges/dist/experimental.svg)](http://github.com/badges/stability-badges)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
-[![Build Status](https://travis-ci.org/IBMresearch/hume.svg?branch=master)](https://travis-ci.org/IBMresearch/hume)
+[![Build Status](https://travis-ci.org/IBMResearch/hume.svg?branch=master)](https://travis-ci.org/IBMResearch/hume)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 :atom_symbol: Microservices framework on top of [LoopBack](http://loopback.io) and [uWebsockets](https://github.com/uNetworking/uWebSockets). Focused in reusability, security and performance.

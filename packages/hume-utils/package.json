@@ -2,11 +2,11 @@
   "name": "@hume/utils",
   "version": "0.0.1",
   "contributors": [
-    "https://github.com/IBMresearch/hume/graphs/contributors"
+    "https://github.com/IBMResearch/hume/graphs/contributors"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/IBMresearch/hume"
+    "url": "https://github.com/IBMResearch/hume"
   },
   "keywords": [
     "micro",
@@ -21,7 +21,7 @@
     "performance"
   ],
   "bugs": {
-    "url": "https://github.com/IBMresearch/hume/issues"
+    "url": "https://github.com/IBMResearch/hume/issues"
   },
   "scripts": {
     "dep-check": "depcheck",

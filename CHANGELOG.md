@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### ✏️ Added
+
+- HTTP app abstraction.
+
 ## [0.0.1] - 2018-6-18
 
 ### ✏️ Added
@@ -31,5 +35,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial Bluemix integration.
 - Monitoring: [jLocke](https://github.com/IBMResearch/jlocke) moved here as [express-monit](packages/hume-express-monit)
 
-[unreleased]: https://github.com/IBMresearch/hume/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/IBMresearch/hume/compare/40ae2fa5b031c2c3edd9981503f2cc7b08eb8d28...v0.0.1
+[unreleased]: https://github.com/IBMResearch/hume/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/IBMResearch/hume/compare/40ae2fa5b031c2c3edd9981503f2cc7b08eb8d28...v0.0.1
