@@ -14,7 +14,7 @@ const utils = require('../../../packages/hume-utils');
 module.exports = Model => {
   // eslint-disable-next-line no-param-reassign
   Model.greet = (msg, options) =>
-    Promise.resolve(`Greetings... ${opts.currentUserId}, ${msg}`);
+    Promise.resolve(`Greetings... ${options.currentUserId}, ${msg}`);
 
   Model.remoteMethod('greet', {
     accepts: [
