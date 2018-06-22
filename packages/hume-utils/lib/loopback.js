@@ -34,6 +34,16 @@ module.exports.getUserId = async req => {
   return result.userId;
 };
 
+module.exports.addUserId = model => {
+  // eslint-disable-next-line no-param-reassign
+  model.createOptionsFromRemotingContext = function createOpts(ctx) {
+    const base = this.base.createOptionsFromRemotingContext(ctx);
+
+    base.currentUserId = base.accessToken && base.accessToken.userId;
+    return base;
+  };
+};
+
 // User and roles to create is no one exists.
 const defaultUser = {
   username: 'admin',
