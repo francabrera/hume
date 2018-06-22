@@ -9,32 +9,31 @@
 
 'use strict';
 
-const bunyan = require('bunyan');
-const PrettyStream = require('bunyan-prettystream');
+const pino = require('pino');
 
-const prettyStdOut = new PrettyStream();
-prettyStdOut.pipe(process.stdout);
+let pretty;
+
+if (process.env.NODE_ENV && process.env.NODE_ENV !== 'production') {
+  pretty = pino.pretty();
+  pretty.pipe(process.stdout);
+}
+
 
 class Logger {
   constructor(name) {
     if (!name) throw new Error('A name is mandatory');
 
-    let level = 'info';
+    this.name = name;
+    this.log = pino({
+      name: this.name,
+      safe: true,
+    }, pretty);
+
+    this.log.level = 'info';
 
     if (process.env.DBG && process.env.DBG === 'true') {
-      level = 'debug';
+      this.log.level = 'debug';
     }
-
-    this.name = name;
-    this.log = bunyan.createLogger({
-      name,
-      streams: [
-        {
-          level,
-          stream: prettyStdOut,
-        },
-      ],
-    });
   }
 
   // We only use these 3 to KISS.
