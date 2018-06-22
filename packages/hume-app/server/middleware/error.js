@@ -13,12 +13,7 @@ const utils = require('../lib/utils');
 
 // A prettier error logging that the LoopBack one.
 
-module.exports = (opts = {}) => (err, req, res, next) => {
-  if (!opts.enabled || !err) {
-    next(err);
-    return;
-  }
-
+module.exports = () => (err, req, res, next) => {
   const error = {
     message: err.message,
     code: err.code,
@@ -36,7 +31,7 @@ module.exports = (opts = {}) => (err, req, res, next) => {
     };
   }
 
-  utils.log.info('HTTP error', { request, error });
+  utils.log.error('HTTP error', { request, error });
 
   next(err);
 };

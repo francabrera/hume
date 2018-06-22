@@ -40,11 +40,7 @@
     "loopback#urlNotFound": {}
   },
   "final:after": {
-    "./middleware/error": {
-      "params": {
-        "enabled": true
-      }
-    },
+    "./middleware/error": {},
     "strong-error-handler": {
       "params": {
         "log": false,
