@@ -19,6 +19,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ### ✏️ Changed
 
 - Using [Elastic APM](https://www.elastic.co/solutions/apm) instead of "monit-express".
+- Using native LoopBack way to get the current user ID:
+  - [Example](https://github.com/IBMResearch/hume/blob/master/example/server/models/cat.js#L27)
+  - [`utils.lb.addUserId`](https://github.com/IBMResearch/hume/tree/master/packages/hume-utils#async-lbadduseridmodel---null)
 
 ## [0.0.1] - 2018-6-18
 
