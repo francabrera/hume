@@ -9,7 +9,8 @@
       "remoting": {
         "sharedMethods": {
           "*": false,
-          "find": true
+          "find": true,
+          "greet": true
         }
       }
     }

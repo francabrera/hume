@@ -28,7 +28,7 @@
           "*": false,
           "login": true,
           "logout": true,
-          "replaceOrCreate": true
+          "create": true
         }
       }
     }
