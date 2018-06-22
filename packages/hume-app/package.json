@@ -30,7 +30,6 @@
   },
   "main": "server/server.js",
   "dependencies": {
-    "@hume/monit-express": "^0.0.1",
     "@hume/utils": "^0.0.1",
     "compression": "^1.0.3",
     "cors": "^2.5.2",

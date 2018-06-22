@@ -40,11 +40,18 @@ const app = {};
 
 module.exports = app;
 
-app.start = (serviceName, updateCache, token) => {
+app.start = (updateCache, token, apm) => {
   utils.log.debug('Checking the environment');
   if (!url || !port) {
     utils.error('Env problem: URL or port not found');
     process.exit(1);
+  }
+
+  if (apm) {
+    utils.log.info('APM enabled');
+    utils.apm = apm;
+  } else {
+    utils.log.info('APM enabled');
   }
 
   utils.log.debug('Creating the WS server ...');
@@ -71,7 +78,7 @@ app.start = (serviceName, updateCache, token) => {
     }, cfg.interval.cache * 1000 * 60);
 
     wsServer.on('error', err => {
-      utils.error('Server error', err);
+      utils.error('Server event error', err);
     });
 
     wsServer.on('connection', ws => {
@@ -89,8 +96,9 @@ app.start = (serviceName, updateCache, token) => {
         cacheKey = checkParams(ws, ip, port, token);
       } catch (err) {
         // 400 - Bad request
-        // We use "utils.log" because an app should log all login attempts.
-        utils.error(JSON.stringify({ ip, port: portC }, err));
+        utils.error('Checking the parameters', err, {
+          custom: { ip, port, token },
+        });
 
         // The library does not support this part of standard.
         // ws.reject(400, msg);

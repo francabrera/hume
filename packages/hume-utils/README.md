@@ -44,16 +44,32 @@ The result of this method to parse the important info from Bluemix app environme
 
 - `appEnv` (object) - The environment in JSON format.
 
+### `async error(msg, error, opts) -> id`
+
+To report errors to logger and APM (if enabled).
+
+- `msg` (string) - Custom message explaining the error.
+- `error` (Error) - JavaScript error.
+- `opts` (object) - Optional parameters:
+  - `userId` (string) - The user ID generating the error. If you want to track also the user in the APM (default: null)
+  - `custom` (object) - some arbitrary details (default: {})
+
 ### `async lb.getUserId(req) -> id`
 
-To get the user ID in LoopBack from a request object. Useful with [this middleware](packages/hume-monit-express).
+To get the user ID in LoopBack from a request object. To use outside HTTP APIs, there LoopBack has its own mechanism, use next point method instead.
 
 - `req` (object) - A Loopback "request" object.
 - `id` (string) - The user identifierm `null` if not found.
 
+### `async lb.addUserId(model) -> null`
+
+To add the current user ID to the actual model when present. Thought to be used in the models with endpoints that need it. So, thanks to [this LoopBack mechanism](https://loopback.io/doc/en/lb3/Using-current-context.html#override-createoptionsfromremotingcontext-in-your-model) we have the field "currentUserId" once this is called.
+
+- `model` (object) - A Loopback "Model" object.
+
 ### `async lb.createUser(app, opts) -> null`
 
-To create a first user and the proper roles. Useful with [this middleware](https://github.com/IBMResearch/express-middleware-todb).
+To create a first user and the proper roles.
 
 - `app` (object) - A Loopback "app" object.
 - `opts` (object) - An object with:
@@ -68,13 +84,13 @@ A wrapper around [Bunyan](https://github.com/trentm/node-bunyan) (with [prettyst
 - `name` (string) - Project name to tag the messages. (default: 'app')
 - `log` (object) - Including next points methods.
 
-#### `log.info(args) -> null`
-
-A wrapper around `bunyan.info` to print (and send to monitoring if setup) only critical errors. To print things that are not errors but we want them always printed, things we want to know that happened (ie: bad login). Keep it to the minimal, because it's also printed in production and "console.\*" are sync operations.
-
 #### `log.error(args) -> null`
 
-A wrapper around `bunyan.error` to print (and send to monitoring if setup) only critical errors.
+A wrapper around `bunyan.error` to print only critical errors.
+
+#### `log.info(args) -> null`
+
+A wrapper around `bunyan.info` to print things that are not errors but we want them always printed, things we want to know that happened (ie: bad login). Keep it to the minimal, because it's also printed in production and `console.*` methods are sync operations.
 
 #### `log.debug(args) -> null`
 

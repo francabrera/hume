@@ -20,7 +20,7 @@ log.info('Starting the app ...');
 
 app.start(__dirname, {
   name,
-  auth: false,
+  // auth: false,
   explorer: {
     title: 'HTTP API Example',
     description: 'Specification demo.',

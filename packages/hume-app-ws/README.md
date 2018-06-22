@@ -33,13 +33,13 @@ Please visit [the example](../../example/ws.html).
 
 :eyes: Full specification.
 
-### `app.start(serviceName, cache, token) -> null`
+### `app.start(cache, token, apm) -> null`
 
 Start the LoopBack app.
 
-- `serviceName` (string) - Microservice identifier, for logging, monitoring, etc.
 - `cache` (async function) - Method to get the data to serve.
 - `token` (string) - For now we only need basic auth to avoid automated scrappers. If not passed auth is disabled. (default: null)
+- `apm` (object) - Elastic APM [express.js agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/express.html) instance (already started).
 
 ### `async app.stop() -> null`
 

@@ -11,7 +11,6 @@
     "test-app": "lerna run test --scope @hume/app",
     "test-ws": "lerna run test --scope @hume/app-ws",
     "test-script": "lerna run test --scope @hume/script",
-    "test-monit-express": "lerna run test --scope @hume/monit-express",
     "test-utils": "lerna run test --scope @hume/utils",
     "test-utils-test": "lerna run test --scope @hume/utils-test",
     "test": "lerna run test",

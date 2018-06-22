@@ -9,6 +9,8 @@
 
 'use strict';
 
+const util = require('util');
+
 // Lodash as base.
 const utils = require('lodash');
 const map = require('p-map');
@@ -49,5 +51,37 @@ if (process.env.Q_MICRO && process.env.Q_MICRO === true) {
   utils.appEnv.port = port;
   utils.appEnv.url = utils.appEnv.url.replace(/3000/, port);
 }
+
+utils.error = async (msg, error, opts) => {
+  if (!msg) {
+    throw Error('Required: "msg"');
+  }
+  log.error(msg, error, opts);
+
+  const optsCap = { custom: opts.custom || {} };
+  let err = error;
+  if (!error) {
+    err = new Error(msg);
+  } else {
+    // To avoid lost this info.
+    optsCap.custom.message = msg;
+  }
+  if (opts.userId) {
+    optsCap.user.id = opts.userId;
+  }
+
+  if (utils.apm && utils.apm.error) {
+    // https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-capture-error
+    const captureError = util.promisify(utils.apm.captureError);
+
+    try {
+      await captureError(err, optsCap);
+
+      log.debug('Error properly reported to APM', { msg, error, opts });
+    } catch (errR) {
+      log.error('APM reporting error: ', errR);
+    }
+  }
+};
 
 module.exports = utils;

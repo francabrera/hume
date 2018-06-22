@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### ✏️ Changed
+
+- Using [Elastic APM](https://www.elastic.co/solutions/apm) instead of "monit-express".
+
 ## [0.0.1] - 2018-6-18
 
 ### ✏️ Added

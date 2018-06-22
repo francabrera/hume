@@ -30,9 +30,8 @@ Start the LoopBack app.
 
 - `path` (string) - Path to the app sources. To bootstrap (configure models, datasources and middleware) the app with some different setup than `hume-app` the one. Probably you should pass `__dirname` here.
 - `opts` (object) - Optional parameters. (default: {})
-  - `name` (string) - Identifier of the microservice for logging, monitoring, etc. If `path` is passed is's gathered from the main app package.json file name. (default: "hume-app")
-  - `noHttp` (boolean) - To re-use only the LoopBack models. The Redis cache is disabled and the HTTP server is not started. (default: false)
   - `auth` (boolean) - To fisable authentication. (default: false)
+  - `noHttp` (boolean) - To re-use only the LoopBack models. The Redis cache is disabled and the HTTP server is not started. (default: false)
   - `cache` (object) - Model caching options, disabled if `noHttp` enabled:
     - `disabled` (boolean) - To disable it. (default: false)
     - `methods` (object) - Methods to cache. The keys represent the model name and the value is a string of arrays with the method names, ie: `{ cat: ["find"] }`. (default: {})
@@ -43,6 +42,7 @@ Start the LoopBack app.
     - `mountPath` (string) - The endpoint where it's exposed. (default: '/explorer')
     - `version` (string) - To overwrite this package version.
     - `termsOfService` (string) - URL poiting to the terms of this service. (default: 'TODO')
+  - `apm` (object) - Elastic APM [express.js agent](https://www.elastic.co/guide/en/apm/agent/nodejs/current/express.html) instance (already started).
 
 NOTE: If a model is "public" in this app it takes precedence over the another app using it. You have to put the one here to "false" and the other to "true" to make it public. It can seem a bit messy but it's a good thing because it allows to reuse also the "sharedMethods" definiton.
 

@@ -14,7 +14,6 @@ const boot = require('loopback-boot');
 
 const utils = require('./lib/utils');
 const cacheSetup = require('./lib/cache');
-const { name } = require('../package');
 
 function exitWithError(msg, err) {
   // It's async because it has to report to monitoring (if enabled).
@@ -24,20 +23,20 @@ function exitWithError(msg, err) {
     .then(() => process.exit(1))
     .catch(errTracking => {
       // We still need to know if the tracking system is failing.
-      utils.log.error('Tracking', errTracking);
+      utils.log.error('Error tracking', errTracking);
       process.exit(1);
     });
 }
 
-// // To catch exceptions out of LoopBack (it catches the ones thrown inside automatically).
-// process.on('uncaughtException', err => exitWithError('uncaughtException', err));
-// // Same for Promises.
-// process.on('unhandledRejection', err =>
-//   exitWithError('unhandledRejection', err),
-// );
+// Node.js breaks and the APM automatically tracks it, but we prefer
+// to control it for convenience, ie: when no APM.
+process.on('uncaughtException', err => exitWithError('uncaughtException', err));
+// Same for Promises, for now node.js doesn't breaks on these events, but it will.
+process.on('unhandledRejection', err =>
+  exitWithError('unhandledRejection', err),
+);
 
 // App instance creation.
-
 const app = loopback();
 module.exports = app;
 
@@ -47,22 +46,16 @@ module.exports = app;
 
 let server;
 app.start = (path, opts = {}) => {
-  let serviceName;
-
   if (!path) {
     exitWithError('The "path" parameter is mandatory');
   }
 
-  if (opts.name) {
-    serviceName = opts.name;
+  if (opts.apm) {
+    utils.log.info('APM enabled');
+    utils.apm = opts.apm;
   } else {
-    serviceName = name;
+    utils.log.info('APM enabled');
   }
-
-  utils.log.debug('Service name', { serviceName });
-
-  // Some passed parameters needed in the "boot" scripts.
-  app.set('serviceName', serviceName);
 
   if (opts.auth || opts.auth === false) {
     app.set('auth', opts.auth);
@@ -110,12 +103,18 @@ app.start = (path, opts = {}) => {
         const baseUrl = app.get('url').replace(/\/$/, '');
         utils.log.debug(`Web server listening at: ${baseUrl}`);
 
-        const urlsInfo = { url: baseUrl };
+        const info = { url: baseUrl, auth: true };
+
+        if (opts.auth === false) {
+          info.auth = false;
+        }
+
         if (app.get('loopback-component-explorer')) {
           const explorerPath = app.get('loopback-component-explorer').mountPath;
-          urlsInfo.explorer = `${baseUrl}${explorerPath}`;
+          info.explorer = `${baseUrl}${explorerPath}`;
         }
-        utils.log.info('Browse your REST API at', urlsInfo);
+
+        utils.log.info('Browse your REST API at', info);
       });
     });
   });

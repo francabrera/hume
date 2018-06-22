@@ -19,7 +19,6 @@ In the [`packages`](packages) folders you can find all you need. Each package in
 - [**hume-script**](packages/hume-script): Devops tasks command line client.
 - [**hume-utils**](packages/hume-utils): Common helpers among the rest of the packages.
 - [**hume-utils-test**](packages/hume-utils-test): Same, but only used in tests.
-- [**hume-monit-express**](packages/hume-monit-express): Express middleware to store requests metadata to a Elastic DB.
 
 ## Install
 
@@ -44,9 +43,7 @@ In most of the cases we use external services, so we have defined next environme
 
 - NODE_ENV: Set it to "production" for deployments. It's importat due to [security](https://github.com/jesusprubio/strong-node#12-returned-errors-dont-include-sensitive-information-about-the-environment-stack-paths-db-queries-etc-cwe-209) and [performance](https://www.dynatrace.com/news/blog/the-drastic-effects-of-omitting-node_env-in-your-express-js-applications) reasons. We think it's a bit confusing with the LoopBack common setup using files with the environment in the name (ie: datasources.production.json). So, simply add the next point ones to enable the persistent service you need in each case.
 - DB_MONGO: MongoDB URI, as the main database engine. If not present memory is used as fallback.
-- DB_ELASTIC: Elastic URI, for monitoring, through [@hume/monit-express](packages/hume-monit-express). If not present related features are disabled.
-- DB_REDIS: Redis URI, for caching.
-- DB_ELASTIC_TEST: Elastic URI, for testing [@hume/monit-express](packages/hume-monit-express). If not present involved tests are omitted.
+- DB_REDIS: Redis URI, for models caching.
 
 ```sh
 # Only Mongo persistent.
