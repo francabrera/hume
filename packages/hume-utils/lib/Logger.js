@@ -13,6 +13,8 @@ const pino = require('pino');
 
 let pretty;
 
+// This is intended for non-production configurations (specification in pino constructor)
+// https://github.com/pinojs/pino/blob/master/docs/API.md#pretty
 if (process.env.NODE_ENV && process.env.NODE_ENV !== 'production') {
   pretty = pino.pretty();
   pretty.pipe(process.stdout);
@@ -37,14 +39,20 @@ class Logger {
   }
 
   // We only use these 3 to KISS.
-  info(...args) {
-    this.log.info(args);
+  info(msg, data) {
+    this.log.info(data, msg);
   }
-  error(...args) {
-    this.log.error(args);
+  error(msg, err, data) {
+    this.log.error(err, msg);
+    if (data) {
+      this.log.error(data);
+    }
   }
-  debug(...args) {
-    this.log.debug(args);
+  debug(msg, err, data) {
+    this.log.debug(err, msg);
+    if (data) {
+      this.log.debug(data);
+    }
   }
 }
 
