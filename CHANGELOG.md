@@ -16,6 +16,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+### ✏️ Added
+
+- Firewall support, allowed options [here](packages/hume-app#appstartpath-opts---null).
+
 ### ✏️ Changed
 
 - Using [Elastic APM](https://www.elastic.co/solutions/apm) instead of "monit-express".

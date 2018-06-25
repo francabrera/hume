@@ -1,0 +1,31 @@
+{
+  "detectOnly": false,
+  "tor": true,
+  "breathe": 360,
+  "tagId": "userId",
+  "whitelist": {
+    "admin": false,
+    "tagAdmin": "isAdmin",
+    "ips": [],
+    "users": []
+  },
+  "blacklist": {
+    "ips": [],
+    "users": []
+  },
+  "ratelimit": {
+    "ip": {
+      "total": 10,
+      "interval": 60
+    },
+    "ipPort": {
+      "total": 20,
+      "interval": 60
+    },
+    "user": {
+      "total": 50,
+      "interval": 60
+    }
+  },
+  "crafted": false
+}

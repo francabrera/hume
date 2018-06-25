@@ -74,6 +74,18 @@ app.start = (path, opts = {}) => {
     app.set('explorer.termsOfService', opts.explorer.termsOfService);
   }
 
+  if (opts.firewall) {
+    app.set('firewall.disable', opts.firewall.disable);
+    app.set('firewall.detectOnly', opts.firewall.detectOnly);
+    app.set('firewall.breathe', opts.firewall.breathe);
+    app.set('firewall.tor', opts.firewall.tor);
+    app.set('firewall.tagId', opts.firewall.tagId);
+    app.set('firewall.whitelist', opts.firewall.whitelist);
+    app.set('firewall.blacklist', opts.firewall.blacklist);
+    app.set('firewall.ratelimit', opts.firewall.ratelimit);
+    // app.set('firewall.crafted', opts.firewall.crafted);
+  }
+
   utils.log.debug('Bootstrapping "hume-app" ...');
   boot(app, __dirname, err => {
     if (err) {
