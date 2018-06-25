@@ -77,7 +77,7 @@ utils.error = async (msg, error, opts) => {
     try {
       await captureError(err, optsCap);
 
-      log.debug('Error properly reported to APM', { msg, error, opts });
+      log.debug('Error properly reported to APM', error, { msg, opts });
     } catch (errR) {
       log.error('APM reporting error: ', errR);
     }

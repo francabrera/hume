@@ -22,6 +22,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Using native LoopBack way to get the current user ID:
   - [Example](https://github.com/IBMResearch/hume/blob/master/example/server/models/cat.js#L27)
   - [`utils.lb.addUserId`](https://github.com/IBMResearch/hume/tree/master/packages/hume-utils#async-lbadduseridmodel---null)
+- Using pino instead Bunyan due to [performance reasons](https://medium.com/@nearform/the-cost-of-logging-9faa11fd053).
 
 ## [0.0.1] - 2018-6-18
 

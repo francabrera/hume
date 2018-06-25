@@ -79,20 +79,20 @@ To create a first user and the proper roles.
 
 ### logger(name) -> log
 
-A wrapper around [Bunyan](https://github.com/trentm/node-bunyan) (with [prettystream](https://github.com/mrrama/node-bunyan-prettystream)), but only the next 3 [levels](https://github.com/trentm/node-bunyan#levels) are allowed.
+A wrapper around [Pino](https://github.com/pinojs/pino) (with [prettystream](https://github.com/pinojs/pino-pretty)), but only the next 3 [levels](https://github.com/pinojs/pino/blob/master/docs/API.md#level) are allowed.
 
 - `name` (string) - Project name to tag the messages. (default: 'app')
 - `log` (object) - Including next points methods.
 
-#### `log.error(args) -> null`
+#### `log.error(msg, err, data)-> null`
 
-A wrapper around `bunyan.error` to print only critical errors.
+A wrapper around `pino.error` to print only critical errors.
 
-#### `log.info(args) -> null`
+#### `log.info(msg, data) -> null`
 
 A wrapper around `bunyan.info` to print things that are not errors but we want them always printed, things we want to know that happened (ie: bad login). Keep it to the minimal, because it's also printed in production and `console.*` methods are sync operations.
 
-#### `log.debug(args) -> null`
+#### `log.debug(msg, err, data) -> null`
 
 Same for debugging.
 
