@@ -1,6 +1,6 @@
 {
   "name": "@hume/script",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "bin": {
     "hume": "./index.js"
   },
@@ -33,7 +33,7 @@
     "test": "echo TODO"
   },
   "dependencies": {
-    "@hume/utils": "^0.0.1",
+    "@hume/utils": "^0.0.2",
     "commander": "^2.15.1"
   },
   "engines": {
