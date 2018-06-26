@@ -15,7 +15,7 @@ let pretty;
 
 // This is intended for non-production configurations (specification in pino constructor)
 // https://github.com/pinojs/pino/blob/master/docs/API.md#pretty
-if (process.env.NODE_ENV && process.env.NODE_ENV !== 'production') {
+if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'production') {
   pretty = pino.pretty();
   pretty.pipe(process.stdout);
 }
