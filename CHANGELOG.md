@@ -18,6 +18,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [0.1.0] - 2018-6-26
 
+### 🐛 Fixed
+
 - Fix a regression in the logger.
 - Use SemVer properly to make @abdonrd happy.
 
