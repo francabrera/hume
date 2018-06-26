@@ -1,6 +1,6 @@
 {
   "name": "@hume/app",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "contributors": [
     "https://github.com/IBMResearch/hume/graphs/contributors"
   ],
@@ -30,7 +30,7 @@
   },
   "main": "server/server.js",
   "dependencies": {
-    "@hume/utils": "^0.0.2",
+    "@hume/utils": "^0.1.0",
     "compression": "^1.0.3",
     "cors": "^2.5.2",
     "fast-ratelimit": "^2.2.0",
