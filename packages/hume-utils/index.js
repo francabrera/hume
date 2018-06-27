@@ -52,7 +52,7 @@ if (process.env.Q_MICRO && process.env.Q_MICRO === true) {
   utils.appEnv.url = utils.appEnv.url.replace(/3000/, port);
 }
 
-utils.error = async (msg, error, opts) => {
+utils.error = async (msg, error, opts = {}) => {
   if (!msg) {
     throw Error('Required: "msg"');
   }

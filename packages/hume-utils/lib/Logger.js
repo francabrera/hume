@@ -10,6 +10,7 @@
 'use strict';
 
 const pino = require('pino');
+const lo = require('lodash');
 
 let pretty;
 
@@ -20,16 +21,18 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV !== 'production') {
   pretty.pipe(process.stdout);
 }
 
-
 class Logger {
   constructor(name) {
     if (!name) throw new Error('A name is mandatory');
 
     this.name = name;
-    this.log = pino({
-      name: this.name,
-      safe: true,
-    }, pretty);
+    this.log = pino(
+      {
+        name: this.name,
+        safe: true,
+      },
+      pretty,
+    );
 
     this.log.level = 'info';
 
@@ -44,13 +47,13 @@ class Logger {
   }
   error(msg, err, data) {
     this.log.error(err, msg);
-    if (data) {
+    if (data && !lo.isEmpty(data)) {
       this.log.error(data);
     }
   }
   debug(msg, err, data) {
     this.log.debug(err, msg);
-    if (data) {
+    if (data && !lo.isEmpty(data)) {
       this.log.debug(data);
     }
   }
