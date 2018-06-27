@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### ✏️ Changed
 
-- Minor improvement in the logger to avoid print empty options object
+- Minor improvement in the logger to avoid print empty options object.
 
 ## [0.3.0] - 2018-6-27
 

@@ -14,7 +14,7 @@ const assert = require('assert');
 const shot = require('snap-shot-it');
 const supertest = require('supertest');
 // We can't require utils package here to avoid a circular dep.
-const lodash = require('lodash');
+const lo = require('lodash');
 
 const { version } = require('./package');
 
@@ -23,7 +23,7 @@ const request = app => supertest(app);
 request.login = async creds => {
   let credsPassed = null;
   if (creds) {
-    if (!lodash.isObject(creds)) {
+    if (!lo.isObject(creds)) {
       throw new Error('Object expected');
     }
 
