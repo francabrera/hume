@@ -45,8 +45,8 @@ module.exports = app;
 // behavior to avoid to repeat code.
 
 let server;
-app.start = (path, opts = {}) => {
-  if (!path) {
+app.start = (paths, opts = {}) => {
+  if (!paths) {
     exitWithError('The "path" parameter is mandatory');
   }
 
@@ -86,51 +86,73 @@ app.start = (path, opts = {}) => {
     // app.set('firewall.crafted', opts.firewall.crafted);
   }
 
-  utils.log.debug('Bootstrapping "hume-app" ...');
-  boot(app, __dirname, err => {
-    if (err) {
-      exitWithError('Bootstrapping "hume-app"', err);
+  function afterBoot() {
+    app.emit('bootedAll');
+
+    if (opts.noHttp === true) {
+      return;
     }
 
-    utils.log.debug('"hume-app" correctly bootstraped, now the user app ...', {
-      path,
-    });
-    boot(app, path, errMain => {
-      if (errMain) {
-        exitWithError('Bootstrapping the user app', errMain);
+    cacheSetup(app);
+
+    utils.log.debug('Starting the web server ...');
+
+    server = app.listen(() => {
+      // The one returned by Bluemix includes a "/" at the end.
+      const baseUrl = app.get('url').replace(/\/$/, '');
+      utils.log.debug(`Web server listening at: ${baseUrl}`);
+
+      const info = { url: baseUrl, auth: true };
+
+      if (opts.auth === false) {
+        info.auth = false;
       }
 
-      app.emit('bootedAll');
+      if (app.get('loopback-component-explorer')) {
+        const explorerPath = app.get('loopback-component-explorer').mountPath;
+        info.explorer = `${baseUrl}${explorerPath}`;
+      }
 
-      if (opts.noHttp === true) {
+      utils.log.info('Browse your REST API at', info);
+    });
+  }
+
+  utils.log.debug('Booting "hume-app" ...');
+  boot(app, __dirname, err => {
+    if (err) {
+      exitWithError('Booting "hume-app"', err);
+    }
+
+    utils.log.debug('"hume-app" correctly booted ...', { __dirname });
+
+    let appFirstPath = paths;
+    if (utils.isArray(paths)) { appFirstPath = paths[0] }
+
+    boot(app, appFirstPath, errMain => {
+      if (errMain) {
+        exitWithError('Booting the first user app', errMain);
+      }
+
+      utils.log.debug('First passed app path correctly booted ...', { path: appFirstPath });
+
+      if (!utils.isArray(paths) || !paths[1]) {
+        afterBoot();
         return;
       }
 
-      cacheSetup(app);
-
-      utils.log.debug('Starting the web server ...');
-
-      server = app.listen(() => {
-        // The one returned by Bluemix includes a "/" at the end.
-        const baseUrl = app.get('url').replace(/\/$/, '');
-        utils.log.debug(`Web server listening at: ${baseUrl}`);
-
-        const info = { url: baseUrl, auth: true };
-
-        if (opts.auth === false) {
-          info.auth = false;
+      boot(app, paths[1], errMain => {
+        if (errMain) {
+          exitWithError('Booting the second user app', errMain);
         }
 
-        if (app.get('loopback-component-explorer')) {
-          const explorerPath = app.get('loopback-component-explorer').mountPath;
-          info.explorer = `${baseUrl}${explorerPath}`;
-        }
+        utils.log.debug('Second passed app path correctly booted ...', { path: paths[1] });
 
-        utils.log.info('Browse your REST API at', info);
+        afterBoot()
       });
     });
   });
 };
+
 
 // HTTP server stop routine, useful in tests.
 app.stop = () => {

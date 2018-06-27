@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.2.0] - 2018-6-27
+
+### ✏️ Changed
+
+- The `app.start` method of the package [`app`](packages/hume-app) now accepts multiple paths in the first argument.
+
 ## [0.1.0] - 2018-6-26
 
 ### 🐛 Fixed

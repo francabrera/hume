@@ -28,7 +28,7 @@ app.start(__dirname);
 
 Start the LoopBack app.
 
-- `path` (string) - Path to the app sources. To bootstrap (configure models, datasources and middleware) the app with some different setup than `hume-app` the one. Probably you should pass `__dirname` here.
+- `path` (string) - Path to the app sources. To bootstrap (configure models, datasources and middleware) the app with some different setup than `hume-app` the one. Probably you should pass `__dirname` here. It can also receive an array with two elements.
 - `opts` ({}) - Optional parameters. (default: {})
   - `auth` (boolean) - To fisable authentication. (default: false)
   - `noHttp` (boolean) - To re-use only the LoopBack models. The Redis cache is disabled and the HTTP server is not started. (default: false)
