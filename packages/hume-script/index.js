@@ -26,17 +26,16 @@ let command;
 program
   .version(version)
   .description(
-    'Some useful development tasks to run things locally but with a' +
-      ' bluemix app environment variables. Only one options is' +
+    'Some useful development tasks. Only one options is ' +
       'supported at the same time.',
   )
   .usage('[options] <app>')
   // in an  with a bluemix app environment variables
   .option(
     '-s, --start <path>',
-    'Start a local app with Bluemix environment variables, ie: ./server.js',
+
+    'Start a local app with a IBM Cloud instance environment variables',
   )
-  .option('-p, --populate', 'Database population ready for production.')
   .parse(process.argv);
 
 log.debug('Started', { args: program.args });
@@ -62,12 +61,6 @@ if (program.start) {
   log.info('Start option passed');
 
   command = path.resolve(process.cwd(), program.start);
-} else if (program.populate) {
-  log.info('DB populate passed');
-
-  log.info('TODO: Still not implemented ...');
-
-  // command = './populate';
 }
 
 if (command) {

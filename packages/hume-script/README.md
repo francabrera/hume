@@ -23,12 +23,11 @@ Output:
 ```sh
 Usage: hume [options] <app>
 
-Some useful development tasks to run things locally but with a bluemix app environment variables. Only one options issupported at the same time.
+Some useful development tasks.Only one options is supported at the same time.
 
 Options:
 
   -V, --version       output the version number
-  -s, --start <path>  Start a local app with Bluemix environment variables, ie: ./server.js
-  -p, --populate      Database population ready for production.
+  -s, --start <path>  Start a local app with a IBM Cloud instance environment variables, ie: ./server.js
   -h, --help          output usage information
 ```
