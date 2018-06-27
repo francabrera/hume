@@ -126,33 +126,39 @@ app.start = (paths, opts = {}) => {
     utils.log.debug('"hume-app" correctly booted ...', { __dirname });
 
     let appFirstPath = paths;
-    if (utils.isArray(paths)) { appFirstPath = paths[0] }
+    let appSecondPath;
+    if (utils.isArray(paths)) {
+      [appFirstPath, appSecondPath] = paths;
+    }
 
-    boot(app, appFirstPath, errMain => {
-      if (errMain) {
-        exitWithError('Booting the first user app', errMain);
+    boot(app, appFirstPath, err1 => {
+      if (err1) {
+        exitWithError('Booting the first user app', err1);
       }
 
-      utils.log.debug('First passed app path correctly booted ...', { path: appFirstPath });
+      utils.log.debug('First passed app path correctly booted ...', {
+        path: appFirstPath,
+      });
 
-      if (!utils.isArray(paths) || !paths[1]) {
+      if (appSecondPath) {
         afterBoot();
         return;
       }
 
-      boot(app, paths[1], errMain => {
-        if (errMain) {
-          exitWithError('Booting the second user app', errMain);
+      boot(app, appSecondPath, err2 => {
+        if (err2) {
+          exitWithError('Booting the second user app', err2);
         }
 
-        utils.log.debug('Second passed app path correctly booted ...', { path: paths[1] });
+        utils.log.debug('Second passed app path correctly booted ...', {
+          path: appSecondPath,
+        });
 
-        afterBoot()
+        afterBoot();
       });
     });
   });
 };
-
 
 // HTTP server stop routine, useful in tests.
 app.stop = () => {
