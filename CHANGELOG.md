@@ -64,6 +64,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial Bluemix integration.
 - Monitoring: [jLocke](https://github.com/IBMResearch/jlocke) moved here as [express-monit](packages/hume-express-monit)
 
-[unreleased]: https://github.com/IBMResearch/hume/compare/v0.0.2...HEAD
+[unreleased]: https://github.com/IBMResearch/hume/compare/v0.3.0...HEAD
+[0.3.0]: https://github.com/IBMResearch/hume/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/IBMResearch/hume/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/IBMResearch/hume/compare/v0.0.2...v0.1.0
 [0.0.2]: https://github.com/IBMResearch/hume/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/IBMResearch/hume/compare/40ae2fa5b031c2c3edd9981503f2cc7b08eb8d28...v0.0.1
