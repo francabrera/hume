@@ -140,7 +140,7 @@ app.start = (paths, opts = {}) => {
         path: appFirstPath,
       });
 
-      if (appSecondPath) {
+      if (!appSecondPath) {
         afterBoot();
         return;
       }
