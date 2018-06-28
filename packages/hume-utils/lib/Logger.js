@@ -51,11 +51,8 @@ class Logger {
       this.log.error(data);
     }
   }
-  debug(msg, err, data) {
-    this.log.debug(err, msg);
-    if (data && !lo.isEmpty(data)) {
-      this.log.debug(data);
-    }
+  debug(msg, data) {
+    this.log.debug(data, msg);
   }
 }
 
