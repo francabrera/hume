@@ -86,15 +86,25 @@ A wrapper around [Pino](https://github.com/pinojs/pino) (with [prettystream](htt
 
 #### `log.error(msg, err, data)-> null`
 
-A wrapper around `pino.error` to print only critical errors.
+Function used to register errors in log. It acts as adapter of the function `pino.error`. 
+
+- `msg` (string) - A message with the explanation
+- `err` (object) - An error to register in the log
+- `data` (object) - An object with additional data to include in error log entry
 
 #### `log.info(msg, data) -> null`
 
-A wrapper around `bunyan.info` to print things that are not errors but we want them always printed, things we want to know that happened (ie: bad login). Keep it to the minimal, because it's also printed in production and `console.*` methods are sync operations.
+Function used to log debug messages. It acts as adapter of the function `pino.info` signature.Keep it to the minimal, because it's also printed in production and `console.*` methods are sync operations.
 
-#### `log.debug(msg, err, data) -> null`
+- `msg` (string) - A message with the explanation
+- `data` (object) - An object with additional data to include in info log entry
 
-Same for debugging.
+#### `log.debug(msg, data) -> null`
+
+Function used to log debug messages. It acts as adapter of the function `pino.debug` signature.
+
+- `msg` (string) - A message with the explanation
+- `data` (object) - An object with additional data to include in debug log entry
 
 ### promise
 
