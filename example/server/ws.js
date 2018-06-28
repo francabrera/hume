@@ -40,5 +40,5 @@ async function cache() {
 
 app.on('bootedAll', () => {
   log.info('hume app booted');
-  appWs.start(name, cache, 'bad_token');
+  appWs.start(cache, 'bad_token');
 });
