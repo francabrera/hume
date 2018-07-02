@@ -54,7 +54,7 @@ app.start = (paths, opts = {}) => {
     utils.log.info('APM enabled');
     utils.apm = opts.apm;
   } else {
-    utils.log.info('APM enabled');
+    utils.log.info('APM disabled');
   }
 
   if (opts.auth || opts.auth === false) {

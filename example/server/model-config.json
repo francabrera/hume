@@ -10,7 +10,8 @@
         "sharedMethods": {
           "*": false,
           "find": true,
-          "greet": true
+          "greet": true,
+          "error": true
         }
       }
     }

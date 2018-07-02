@@ -58,7 +58,7 @@ utils.error = async (msg, error, opts = {}) => {
   }
   log.error(msg, error, opts);
 
-  if (utils.apm && utils.apm.error) {
+  if (utils.apm && utils.apm.captureError) {
     const optsCap = { custom: opts.custom || {} };
     let err = error;
     if (!error) {
@@ -72,15 +72,28 @@ utils.error = async (msg, error, opts = {}) => {
     }
 
     // https://www.elastic.co/guide/en/apm/agent/nodejs/current/agent-api.html#apm-capture-error
-    const captureError = util.promisify(utils.apm.captureError);
+    // TODO: Not working => using callbacks
+    // const captureError = util.promisify(utils.apm.captureError);
 
-    try {
-      await captureError(err, optsCap);
+    // try {
+    //   await captureError(err, optsCap);
 
-      log.debug('Error properly reported to APM', { msg, error: error.message, opts });
-    } catch (errR) {
-      log.error('APM reporting error: ', errR);
-    }
+    //   log.debug('Error properly reported to APM', { msg, error: error.message, opts });
+    // } catch (errR) {
+    //   log.error('APM reporting error: ', errR);
+    // }
+    utils.apm.captureError(err, optsCap, errR => {
+      if (errR) {
+        log.error('APM reporting error: ', errR);
+        return;
+      }
+
+      log.debug('Error properly reported to APM', {
+        msg,
+        error: error.message,
+        opts,
+      });
+    });
   }
 };
 

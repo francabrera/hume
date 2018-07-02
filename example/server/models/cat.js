@@ -24,5 +24,16 @@ module.exports = Model => {
     returns: { arg: 'greeting', type: 'string' },
   });
 
+  // eslint-disable-next-line no-param-reassign
+  Model.error = () => {
+    utils.error('test error', new Error('anyerror'));
+
+    return Promise.resolve('Internal error launched, everything fine here');
+  };
+
+  Model.remoteMethod('error', {
+    returns: { arg: 'hi', type: 'string' },
+  });
+
   utils.lb.addUserId(Model);
 };

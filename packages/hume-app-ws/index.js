@@ -51,7 +51,7 @@ app.start = (updateCache, token, apm) => {
     utils.log.info('APM enabled');
     utils.apm = apm;
   } else {
-    utils.log.info('APM enabled');
+    utils.log.info('APM disabled');
   }
 
   utils.log.debug('Creating the WS server ...');

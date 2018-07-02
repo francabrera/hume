@@ -9,10 +9,14 @@
 
 'use strict';
 
-const utils = require('../../packages/hume-utils');
-const app = require('../../packages/hume-app');
-
 const name = 'Demo HTTP API';
+
+// Add this to the VERY top of the first file loaded in your app
+const apm = require('elastic-apm-node').start({ serviceName: name });
+
+const utils = require('../../packages/hume-utils');
+
+const app = require('../../packages/hume-app');
 
 const log = utils.logger(name);
 
@@ -20,7 +24,8 @@ log.info('Starting the app ...');
 
 app.start(__dirname, {
   name,
-  // auth: false,
+  apm,
+  auth: false,
   explorer: {
     title: 'HTTP API Example',
     description: 'Specification demo.',
