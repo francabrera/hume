@@ -15,7 +15,8 @@
     "test-utils-test": "lerna run test --scope @hume/utils-test",
     "test": "lerna run test",
     "pretest": "npm i && npm run lint && npm run dep-check",
-    "publish": "lerna publish"
+    "publish": "lerna publish",
+    "apm": "cd apm && docker-compose up"
   },
   "devDependencies": {
     "depcheck": "^0.6.8",

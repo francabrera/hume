@@ -71,6 +71,16 @@ npm run test-utils
 npm run test-utils-test
 ```
 
+### APM
+
+This setup expects [an Elastic APM](https://www.elastic.co/solutions/apm). Please visit [the HTTP API example](example/server/server.js) to see how to setup it in your application.
+
+In [this folder](apm) we provide a Docker project to use locally. Be sure your [docker-compose](https://docs.docker.com/compose) is working fine and use the next task.
+
+```sh
+npm run apm
+```
+
 ## Contributing
 
 :sunglasses: If you'd like to help please take a look to [this file](.github/CONTRIBUTING.md).
