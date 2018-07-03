@@ -9,8 +9,6 @@
 
 'use strict';
 
-const util = require('util');
-
 // Lodash as base.
 const utils = require('lodash');
 const map = require('p-map');
