@@ -20,6 +20,7 @@ $(function() {
   });
 
   var accessToken;
+  var basePath;
   function loadSwaggerUi(config) {
     var methodOrder = ['get', 'head', 'options', 'put', 'post', 'delete'];
     /* eslint-disable camelcase */
@@ -30,6 +31,7 @@ $(function() {
       dom_id: 'swagger-ui-container',
       supportHeaderParams: true,
       onComplete: function(swaggerApi, swaggerUi) {
+        basePath = swaggerApi.basePath;
         log('Loaded SwaggerUI');
         log(swaggerApi);
         log(swaggerUi);
@@ -46,9 +48,8 @@ $(function() {
         if (window.localStorage) {
           var key = window.localStorage.getItem(lsKey);
           if (key) {
-            $('#input_accessToken')
-              .val(key)
-              .submit();
+            $('#input_accessToken').val(key);
+            $('#explore').click();
           }
         }
       },
@@ -69,10 +70,32 @@ $(function() {
     /* eslint-disable camelcase */
 
     $('#explore').click(setAccessToken);
-    $('#api_selector').submit(setAccessToken);
+    $('#apiTokenButton').click(setAPIToken);
+    // $('#api_selector').submit(setAccessToken);
     $('#input_accessToken').keyup(onInputChange);
 
     window.swaggerUi.load();
+  }
+
+  function setAPIToken(e) {
+    e.stopPropagation(); // Don't let the default #explore handler fire
+    e.preventDefault();
+    var key = $('#input_apiToken')[0].value;
+    log('key: ' + key);
+    if (key && key.trim() !== '') {
+      log('added apiToken ' + key);
+      var requestAccessToken = $.post(basePath + '/users/loginWithToken', {
+        apiToken: key,
+      });
+      $('.accessTokenDisplay').text('Getting token.');
+      // Put the results in a div
+      requestAccessToken.done(function(data) {
+        if (data && data.id) {
+          $('#input_accessToken')[0].value = data.id;
+          setAccessToken(e);
+        }
+      });
+    }
   }
 
   function setAccessToken(e) {
