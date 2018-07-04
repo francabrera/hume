@@ -16,6 +16,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.0] - 2018-7-4
+
+### ✏️ Changed
+
+- Using [lambda-rate-limiter](https://github.com/simlu/lambda-rate-limiter) instead [node-fast-ratelimit](https://github.com/valeriansaliou/node-fast-ratelimit) for the firewall of "api-app" to avoid compilation problems deploying in cloudfoundry.
+
 ## [0.5.0] - 2018-7-3
 
 ### 🎉 Added

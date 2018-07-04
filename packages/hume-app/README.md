@@ -59,6 +59,7 @@ Start the LoopBack app.
       - `user`
       - `custom`
     - `ratelimit` (boolean/{}) - To avoid huge loads. (default: true)
+      - `maxInterval` (number) - Excess os requests per interval causes earliest seen to drop, per instantiation. (default: 500)
       - `ip` (boolean/{}) - By IP address.
         - `total` (number) - Number of requests over timespan. (default: 10)
         - `interval` (number) - Time bucket (in seconds) (default: 60)

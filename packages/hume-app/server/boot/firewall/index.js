@@ -12,8 +12,8 @@
 const util = require('util');
 
 const torTest = require('tor-test');
-// https://github.com/valeriansaliou/node-fast-ratelimit#notes-on-performance
-const { FastRateLimit } = require('fast-ratelimit');
+// https://github.com/simlu/lambda-rate-limiter#why-not-using-existing-similar-modules
+const limiter = require('lambda-rate-limiter');
 
 const utils = require('../../lib/utils');
 const defaults = require('./defaults');
@@ -26,12 +26,6 @@ class Firewall {
   constructor(opts = {}) {
     this.detectOnly = opts.detectOnly || defaults.detectOnly;
     this.tagId = opts.tagId || defaults.tagId;
-
-    this.breathe = opts.breathe;
-    // eslint-disable-next-line prefer-destructuring
-    if (opts.breathe || opts.breathe >= 0) {
-      this.breathe = opts.breathe;
-    }
 
     this.tor = opts.tor || defaults.tor;
 
@@ -54,21 +48,31 @@ class Firewall {
 
     this.limiters = {};
     let limitIpTotal = defaults.ratelimit.ip.total;
-    let limitIpInterval = defaults.ratelimit.ip.interval;
+    let limitIpInterval = defaults.ratelimit.ip.interval * 1000;
 
-    if (opts.ratelimit && opts.ratelimit.ip) {
-      if (opts.ratelimit.ip.total) {
-        limitIpTotal = opts.ratelimit.ip.total;
+    // Sets the "max" option here, https://github.com/isaacs/node-lru-cache#options
+    // (passed as "uniqueTokenPerInterval" in "lambda-rate-limiter").
+    this.maxInterval = defaults.ratelimit.maxInterval;
+
+    if (opts.ratelimit) {
+      if (opts.ratelimit.maxInterval) {
+        this.maxInterval = opts.ratelimit.maxInterval;
       }
-      if (opts.ratelimit.ip.interval) {
-        limitIpInterval = opts.ratelimit.ip.interval;
+
+      if (opts.ratelimit.ip) {
+        if (opts.ratelimit.ip.total) {
+          limitIpTotal = opts.ratelimit.ip.total;
+        }
+        if (opts.ratelimit.ip.interval) {
+          limitIpInterval = opts.ratelimit.ip.interval;
+        }
       }
     }
 
     if (!opts.ratelimit || opts.ratelimit.ip !== false) {
-      this.limiters.ip = new FastRateLimit({
-        threshold: limitIpTotal,
-        ttl: limitIpInterval,
+      this.limiters.ip = limiter({
+        interval: limitIpInterval,
+        uniqueTokenPerInterval: this.maxInterval,
       });
     }
 
@@ -85,9 +89,9 @@ class Firewall {
     }
 
     if (!opts.ratelimit || opts.ratelimit.ipPort !== false) {
-      this.limiters.ipPort = new FastRateLimit({
-        threshold: limitIpPortTotal,
-        ttl: limitIpPortInterval,
+      this.limiters.ipPort = limiter({
+        interval: limitIpPortInterval,
+        uniqueTokenPerInterval: this.maxInterval,
       });
     }
 
@@ -104,9 +108,9 @@ class Firewall {
     }
 
     if (!opts.ratelimit || opts.ratelimit.user !== false) {
-      this.limiters.user = new FastRateLimit({
-        threshold: limitUserTotal,
-        ttl: limitUserInterval,
+      this.limiters.user = limiter({
+        interval: limitUserInterval,
+        uniqueTokenPerInterval: this.maxInterval,
       });
     }
 
@@ -120,6 +124,11 @@ class Firewall {
       this.detectOnly,
       this.tor,
       this.tagId,
+      {
+        ip: limitIpTotal,
+        ipPort: limitIpPortTotal,
+        user: limitUserTotal,
+      },
     );
     this.torReady = false;
     this.intervalTor = null;

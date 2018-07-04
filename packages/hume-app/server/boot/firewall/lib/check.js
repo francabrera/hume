@@ -17,7 +17,15 @@ const utils = require('../../../lib/utils');
 
 const isTor = util.promisify(torTest.isTor);
 
-module.exports = async (req, whitelist, blacklist, limiters, tor, tagId) => {
+module.exports = async (
+  req,
+  whitelist,
+  blacklist,
+  limiters,
+  tor,
+  tagId,
+  limits,
+) => {
   const result = { allow: true, block: false };
   const port = req.connection.remotePort;
   const withWhite = {
@@ -77,7 +85,7 @@ module.exports = async (req, whitelist, blacklist, limiters, tor, tagId) => {
 
   if (limiters.ip) {
     try {
-      await limiters.ip.consume(req.ip);
+      await limiters.ip.check(limits.ip, req.ip);
     } catch (err) {
       result.allow = false;
       result.block = true;
@@ -89,7 +97,7 @@ module.exports = async (req, whitelist, blacklist, limiters, tor, tagId) => {
 
   if (limiters.ipPort) {
     try {
-      await limiters.IpPort.consume(`${req.ip}:${port}`);
+      await limiters.IpPort.check(limits.ipPort, `${req.ip}:${port}`);
     } catch (err) {
       result.allow = false;
       result.block = true;
@@ -104,7 +112,7 @@ module.exports = async (req, whitelist, blacklist, limiters, tor, tagId) => {
   }
 
   try {
-    await limiters.user.consume(req.userId);
+    await limiters.user.check(limits.user, req.userId);
   } catch (err) {
     result.allow = false;
     result.block = true;
